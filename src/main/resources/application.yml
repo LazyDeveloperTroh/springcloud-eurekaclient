@@ -1,0 +1,15 @@
+server:
+  port: 0 # 랜덤포트를 사용하겠다
+
+spring:
+  application:
+    name: user-service
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://192.168.219.136:8761/eureka # 유레카 서버에 클라이언트를 등록한다.
